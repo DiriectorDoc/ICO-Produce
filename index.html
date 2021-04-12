@@ -30,9 +30,9 @@
 
 			$(function(){
 				if(window.isIE){
-					alert("You are using Internet Explorer. Come aspects of this page will not load correctly.")
+					alert("You are using Internet Explorer. Some aspects of this page will not load correctly.")
 				}
-				let File = function(source, name){
+				let U8File = function(source, name){
 						this.content = new Uint8Array(source);
 						this.name = name;
 					},
@@ -60,7 +60,7 @@
 									await e.arrayBuffer().then(arrayBuffer => {
 										buffer = arrayBuffer
 									});
-									e = (await command([new File(buffer, name)], `convert -background none -gravity center ${name} -resize 256x256 -extent 256x256 ${name}.png`))[0];
+									e = (await command([new U8File(buffer, name)], `convert -background none -gravity center ${name} -resize 256x256 -extent 256x256 ${name}.png`))[0];
 									img.src = URL.createObjectURL(e)
 								}
 								inputImages.push(img)
@@ -71,7 +71,7 @@
 						})
 
 						await e.arrayBuffer().then(buffer => {
-							preparedImages.push(new File(buffer, e.name.replaceAll(" ", "_")))
+							preparedImages.push(new U8File(buffer, e.name.replaceAll(" ", "_")))
 						})
 					}
 					for(let e of inputImages){
