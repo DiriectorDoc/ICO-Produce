@@ -1,0 +1,27 @@
+{
+  "name": "ico-produce",
+  "version": "1.0.0",
+  "description": "Create ICO files with any image(s)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DiriectorDoc/ICO-Produce"
+  },
+  "keywords": [
+    "ico",
+    "milti-resolution",
+    "multiresolution",
+    "png",
+    "create",
+    "generate",
+    "icon"
+  ],
+  "author": "diriectordoc",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "wasm-imagemagick": "^1.2.8"
+  }
+}

@@ -1,0 +1,82 @@
+/*
+  * Font file from:
+  * https://www.1001freefonts.com/mini-story.font
+  */
+@font-face {
+  font-family: "Mini Story";
+  src: url("ttf/Mini Story.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Mini Story";
+  src: url("ttf/Mini Story Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+body {
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  background: #888;
+}
+
+h1 {
+  font-size: 64px;
+  font-family: "Mini Story", "Comic Sans MS", "Comic Sans", cursive;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 32px;
+  text-align: center;
+}
+h1 img {
+  vertical-align: sub;
+}
+
+.social {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+
+.footer {
+  color: white;
+  padding: 1em;
+  padding-bottom: 2em;
+  background: #333;
+}
+.footer a {
+  color: #88e;
+}
+.footer a:visited {
+  color: #B981EE;
+}
+
+.input-button {
+  display: inline-block;
+  font-size: 1.3rem;
+  padding: 0.4em 0;
+}
+.input-button label {
+  cursor: pointer;
+  padding: 0.4em;
+  border-radius: 0.2em;
+  background: #4A9C4A;
+}
+.input-button #main-input {
+  display: none;
+}
+
+.preview-images {
+  padding: 20px;
+}
+
+.container {
+  max-width: 1024px;
+  background: #ccc;
+  margin: auto;
+  position: relative;
+}
+
+.content-wrapper {
+  padding: 1em;
+}
+
+/*# sourceMappingURL=main.css.map */
