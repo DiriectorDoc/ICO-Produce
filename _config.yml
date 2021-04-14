@@ -1,2 +1,2 @@
-includes:
-  - node_modules/*
+include:
+  - node_modules/wasm-imagemagick/dist/
