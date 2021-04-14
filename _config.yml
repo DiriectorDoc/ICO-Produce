@@ -1,1 +1,2 @@
-exclude: []
+includes:
+  - node_modules/*
