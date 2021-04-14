@@ -5,8 +5,8 @@
 		<meta name="description" content="Home page" />
 		<meta name="author" content="Diriector_Doc" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="last-updated" content="Sat, 10 Apr 2021 05:02 GMT" />
-		<meta name="keywords" content="diriector_doc, diriectordoc, diriector doc, website, ico, milti-resolution, multiresolution, png, create, generate, icon" />
+		<meta name="last-updated" content="Wed, 14 Apr 2021 17:26 GMT" />
+		<meta name="keywords" content="diriector_doc, diriectordoc, diriector doc, website, ico, milti-resolution, multiresolution, png, create, generate, icon, convert, jpeg, jpg, filetypes, files, file type, produce" />
 		<meta property="og:title" content="ICO Produce" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://diriectordoc.github.io/ICO-Produce" />
@@ -19,6 +19,7 @@
 		<meta property="og:site_name" content="Diriector_Doc Pages" />
 		<link href="../global.css" rel="stylesheet" type="text/css" />
 		<link href="main.css" rel="stylesheet" type="text/css" />
+		<link href="icon/icon.ico" rel="icon" type="image/x-icon" />
 		<script type="text/javascript" src="../global.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
         <script type="module">
@@ -49,19 +50,21 @@
 				$("input").change(async function(){
 					$(".loading").show()
 					let preparedImages = [],
-						inputImages;
+						inputImages = [];
 					for(let e of this.files){
 						let name = e.name.replaceAll(" ", "_");
 						await new Promise((resolve, reject) => {
 							let img = new Image();
 							img.onload = async () => {
 								if(img.width != img.height || img.width > 256){
-									let buffer;
+									let buffer,
+										max = Math.max(img.width, img.height),
+										aspect = max >= 256 ? 256 : max;
 									await e.arrayBuffer().then(arrayBuffer => {
 										buffer = arrayBuffer
 									});
-									e = (await command([new U8File(buffer, name)], `convert -background none -gravity center ${name} -resize 256x256 -extent 256x256 ${name}.png`))[0];
-									img.src = URL.createObjectURL(e)
+									e = (await command([new U8File(buffer, name)], `convert -background none -gravity center ${name} -resize ${aspect}x${aspect} -extent ${aspect}x${aspect} ${name}.png`))[0];
+									img.src = URL.createObjectURL(e.blob)
 								}
 								inputImages.push(img)
 								resolve()
@@ -69,14 +72,12 @@
 							img.onerror = reject;
 							img.src = URL.createObjectURL(e)
 						})
-
-						await e.arrayBuffer().then(buffer => {
-							preparedImages.push(new U8File(buffer, e.name.replaceAll(" ", "_")))
-						})
+						preparedImages.push(e)
 					}
-					for(let e of inputImages){
-						$(".loading").append(e)
+					for(let e of preparedImages){
+						$(".preview-images").append(`<img src="${URL.createObjectURL(e.blob)}" />`)
 					}
+					$(".loading").hide()
 					//imagesToICO(inputFiles)
 				})
 			})
@@ -88,10 +89,10 @@
 				<a href="https://github.com/DiriectorDoc/ICO-Produce" class="github"></a>
 			</div>
 			<div class="content-wrapper">
-				<h1><img src="img/produce.png" height="80" />ICO Produce</h1>
+				<h1><img src="img/produce.png" height="80" /><span>ICO Produce</span></h1>
 				<div class="input-button">
 					<label for="main-input">Select Image</label>
-					<input id="main-input" type="file" accept="image/png, image/jpeg, image/icon" multiple />
+					<input id="main-input" type="file" accept="image/png, image/jpeg, image/x-icon, image/bmp, image/gif" multiple />
 				</div>
 				<div class="preview-images">
 					<img class="loading" src="img/loading.png" style="display:none" />
