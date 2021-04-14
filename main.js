@@ -4,11 +4,20 @@ async function command(files, command){
     return await Magick.Call(files, command.split(" "))
 }
 
+const /*args = {},*/
+      preparedImages = [],
+      inputImages = [];
+
+/*for(const [k, v] of new URLSearchParams(location.href)){
+    args[k] = v
+}*/
+
 $(function(){
     if(window.isIE){
-        alert("You are using Internet Explorer. Come aspects of this page will not load correctly.")
+        alert("You are using Internet Explorer. This interface can only be used on modern browsers.")
+        return
     }
-    let File = function(source, name){
+    let U8File = function(source, name){
             this.content = new Uint8Array(source);
             this.name = name;
         },
@@ -19,25 +28,26 @@ $(function(){
             }
             cmd += "icon.jpg";
             let processedFile = (await command(inputFiles, cmd))[0]
-            $(".preview-images").append(`<img src="${URL.createObjectURL(processedFile.blob)}">`)
+            $(".input-images").append(`<img src="${URL.createObjectURL(processedFile.blob)}">`)
             console.log("created image " + processedFile.name)
         };
     $("input").change(async function(){
         $(".loading").show()
-        let preparedImages = [],
-            inputImages;
+        preparedImages.length = inputImages.length = 0;
         for(let e of this.files){
             let name = e.name.replaceAll(" ", "_");
             await new Promise((resolve, reject) => {
                 let img = new Image();
                 img.onload = async () => {
                     if(img.width != img.height || img.width > 256){
-                        let buffer;
+                        let buffer,
+                            max = Math.max(img.width, img.height),
+                            aspect = max >= 256 ? 256 : max;
                         await e.arrayBuffer().then(arrayBuffer => {
                             buffer = arrayBuffer
                         });
-                        e = (await command([new File(buffer, name)], `convert -background none -gravity center ${name} -resize 256x256 -extent 256x256 ${name}.png`))[0];
-                        img.src = URL.createObjectURL(e)
+                        e = (await command([new U8File(buffer, name)], `convert -background none -gravity center ${name} -resize ${aspect}x${aspect} -extent ${aspect}x${aspect} ${name}.png`))[0];
+                        img.src = URL.createObjectURL(e.blob)
                     }
                     inputImages.push(img)
                     resolve()
@@ -45,14 +55,12 @@ $(function(){
                 img.onerror = reject;
                 img.src = URL.createObjectURL(e)
             })
-
-            await e.arrayBuffer().then(buffer => {
-                preparedImages.push(new File(buffer, e.name.replaceAll(" ", "_")))
-            })
+            preparedImages.push(e)
         }
-        for(let e of inputImages){
-            $(".loading").append(e)
+        for(let e of preparedImages){
+            $(".input-images").append(`<img src="${URL.createObjectURL(e.blob ?? e)}" />`)
         }
+        $(".loading").hide()
         //imagesToICO(inputFiles)
     })
 })

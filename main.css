@@ -60,12 +60,34 @@ h1 img, h1 span {
   border-radius: 0.2em;
   background: #4A9C4A;
 }
-.input-button #main-input {
+.input-button input {
   display: none;
 }
 
-.preview-images {
+.input-images {
   padding: 20px;
+  border: 2px gray solid;
+  margin: 10px 0;
+  background: white;
+  text-align: center;
+}
+.input-images img {
+  vertical-align: baseline;
+  margin: 0 1em;
+  border: 1px black dotted;
+}
+.input-images img:hover {
+  background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+.loading {
+  border: none !important;
+  background: none !important;
+}
+.loading:hover {
+  background: none !important;
 }
 
 .container {

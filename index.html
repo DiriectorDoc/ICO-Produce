@@ -10,11 +10,11 @@
 		<meta property="og:title" content="ICO Produce" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://diriectordoc.github.io/ICO-Produce" />
-		<meta property="og:image" content="https://diriectordoc.github.io/ICO-Produce/img/" />
+		<meta property="og:image" content="https://diriectordoc.github.io/ICO-Produce/img/produce.png" />
 		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="130" />
-		<meta property="og:image:height" content="157" />
-		<meta property="og:description" content="The home page for Diriector_Doc's creations." />
+		<meta property="og:image:width" content="512" />
+		<meta property="og:image:height" content="490" />
+		<meta property="og:description" content="Multiresolution ICO file generator." />
 		<meta property="og:locale" content="en_CA" />
 		<meta property="og:site_name" content="Diriector_Doc Pages" />
 		<link href="../global.css" rel="stylesheet" type="text/css" />
@@ -29,9 +29,18 @@
 				return await Magick.Call(files, command.split(" "))
 			}
 
+			const /*args = {},*/
+				  preparedImages = [],
+				  inputImages = [];
+
+			/*for(const [k, v] of new URLSearchParams(location.href)){
+				args[k] = v
+			}*/
+
 			$(function(){
 				if(window.isIE){
-					alert("You are using Internet Explorer. Some aspects of this page will not load correctly.")
+					alert("You are using Internet Explorer. This interface can only be used on modern browsers.")
+					return
 				}
 				let U8File = function(source, name){
 						this.content = new Uint8Array(source);
@@ -44,13 +53,12 @@
 						}
 						cmd += "icon.jpg";
 						let processedFile = (await command(inputFiles, cmd))[0]
-						$(".preview-images").append(`<img src="${URL.createObjectURL(processedFile.blob)}">`)
+						$(".input-images").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
 						console.log("created image " + processedFile.name)
 					};
 				$("input").change(async function(){
 					$(".loading").show()
-					let preparedImages = [],
-						inputImages = [];
+					preparedImages.length = inputImages.length = 0;
 					for(let e of this.files){
 						let name = e.name.replaceAll(" ", "_");
 						await new Promise((resolve, reject) => {
@@ -75,7 +83,7 @@
 						preparedImages.push(e)
 					}
 					for(let e of preparedImages){
-						$(".preview-images").append(`<img src="${URL.createObjectURL(e.blob)}" />`)
+						$(".input-images").append(`<img src="${URL.createObjectURL(e.blob ?? e)}" />`)
 					}
 					$(".loading").hide()
 					//imagesToICO(inputFiles)
@@ -91,10 +99,9 @@
 			<div class="content-wrapper">
 				<h1><img src="img/produce.png" height="80" /><span>ICO Produce</span></h1>
 				<div class="input-button">
-					<label for="main-input">Select Image</label>
-					<input id="main-input" type="file" accept="image/png, image/jpeg, image/x-icon, image/bmp, image/gif" multiple />
+					<label><input type="file" accept="image/png, image/jpeg, image/x-icon, image/bmp, image/gif" multiple />Select Image</label>
 				</div>
-				<div class="preview-images">
+				<div class="input-images">
 					<img class="loading" src="img/loading.png" style="display:none" />
 				</div>
 			</div>
