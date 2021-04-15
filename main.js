@@ -1,5 +1,4 @@
 import * as Magick from "./wasm-imagemagick/magickApi.js"
-//import * as Magick from "https://cdn.jsdelivr.net/npm/wasm-imagemagick/dist/bundles/magickApi.js"
 
 async function command(files, command){
     return await Magick.Call(files, command.split(" "))
@@ -9,13 +8,13 @@ const /*args = {},*/
       preparedImages = [],
       preparedFiles = [];
 
-/*for(const [k, v] of new URLSearchParams(location.href)){
+/*for(const [k, v] of new URLSearchParams(location.search)){
     args[k] = v
 }*/
 
 $(function(){
     if(window.isIE){
-        alert("You are using Internet Explorer. This interface can only be used on modern browsers.")
+        alert("You are using Internet Explorer. This application can only be used on modern browsers.")
         return
     }
     let U8File = function(source, name){
@@ -36,9 +35,12 @@ $(function(){
             $(".output-images .loading").hide()
         };
     $("input").change(async function(){
+        /* ReseTting */
         $(".input-images .loading").show()
         $(".input-images img:not(.loading)").remove()
         preparedImages.length = 0;
+
+        /* Store uploaded images locally as blobs and Unit8Arrays */
         for(let e of this.files){
             let name = e.name.replaceAll(" ", "_");
             await new Promise((resolve, reject) => {
@@ -64,6 +66,18 @@ $(function(){
             })
             preparedImages.push(e)
         }
+
+        /* Bubble sort; smallest to largest in size; may be important for conversion */
+        for(let i = 1; i < preparedImages.length; i++)
+            for(let j = 0; j < preparedImages.length - i; j++){
+                if(preparedImages[j+1].width < preparedImages[j].width){
+                    [preparedImages[j+1], preparedImages[j], preparedFiles[j+1], preparedFiles[j]] =
+                    // Swap ↑                   ↑                  ↑                   ↑
+                    [preparedImages[j], preparedImages[j+1], preparedFiles[j], preparedFiles[j+1]]
+                }
+            }
+
+        /* Display the uploaded images */
         for(let e of preparedImages){
             $(".input-images").append(`<img src="${URL.createObjectURL(e)}" />`)
         }
