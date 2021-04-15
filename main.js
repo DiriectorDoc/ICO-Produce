@@ -1,4 +1,4 @@
-import * as Magick from "./imagemagick/magickApi.js"
+import * as Magick from "./wasm-imagemagick/magickApi.js"
 //import * as Magick from "https://cdn.jsdelivr.net/npm/wasm-imagemagick/dist/bundles/magickApi.js"
 
 async function command(files, command){
