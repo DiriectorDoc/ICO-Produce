@@ -12,6 +12,13 @@ const /*args = {},*/
     args[k] = v
 }*/
 
+function displayImages(){
+    $(".input-images .imageContainer").remove();
+    for(let i in preparedImages){
+        $(".input-images").append(`<div class="image-container"><img src="${URL.createObjectURL(preparedImages[i])}" /><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" list-index=${i}><rect width="15" height="15" x=".5" y=".5" fill="red" stroke="maroon" stroke-linecap="round" ry="0"/><path fill="#fff" d="M6.63 2.585v.996H3.668v9.837h8.667V3.581H9.32v-.996z"/><path d="M5.833 1.5v1.083H1.5v1.084h1.083V14.5h10.834V3.667H14.5V2.583h-4.333V1.5zm1.084 1.083h2.166v1.084h3.25v9.75H3.667v-9.75h3.25zm-1.084 3.25v5.417h1.084V5.833zm3.25 0v5.417h1.084V5.833z" color="#4d4d4d"/></svg></div>`)
+    }
+}
+
 $(function(){
     if(window.isIE){
         alert("You are using Internet Explorer. This application can only be used on modern browsers.")
@@ -31,13 +38,12 @@ $(function(){
             cmd += " icon.ico";
             let processedFile = (await command(inputFiles, cmd))[0];
             $(".output-images").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
-            
             $(".output-images .loading").hide()
         };
     $("input").change(async function(){
-        /* ReseTting */
+        /* Resetting */
         $(".input-images .loading").show()
-        $(".input-images img:not(.loading)").remove()
+        $(".input-images .image-container").remove()
         preparedImages.length = 0;
 
         /* Store uploaded images locally as blobs and Unit8Arrays */
@@ -51,9 +57,8 @@ $(function(){
                         buffer = arrayBuffer
                     });
                     if(img.width != img.height || img.width > 256){
-                        let max = Math.max(img.width, img.height),
-                            aspect = max >= 256 ? 256 : max;
-                        e = (await command([new U8File(buffer, name)], `convert -background none -gravity center ${name} -resize ${aspect}x${aspect} -extent ${aspect}x${aspect} ${name}.png`))[0].blob;
+                        let aspect = Math.min(Math.max(img.width, img.height), 256);
+                        e = (await command([new U8File(buffer, name)], `convert -background none -gravity center ${name} -extent ${aspect}x${aspect} ${name}_e.png`))[0].blob;
                         await e.arrayBuffer().then(arrayBuffer => {
                             buffer = arrayBuffer
                         });
@@ -62,7 +67,9 @@ $(function(){
                     resolve()
                 };
                 img.onerror = reject;
-                img.src = URL.createObjectURL(e)
+                e.arrayBuffer().then(async (buffer) => {
+                    img.src = URL.createObjectURL(e = (await command([new U8File(buffer, name)], `convert ${name} -resize 256x256> ${name}_s.png`))[0].blob)
+                })
             })
             preparedImages.push(e)
         }
@@ -78,14 +85,20 @@ $(function(){
             }
 
         /* Display the uploaded images */
-        for(let e of preparedImages){
-            $(".input-images").append(`<img src="${URL.createObjectURL(e)}" />`)
-        }
+        displayImages()
         $(".input-images .loading").hide()
         
         $(".convert.button").removeClass("gray")
-        $("button").click(function(){
-            imagesToICO(preparedFiles)
+        if(!$("button")[0].onclick){
+            $("button")[0].onclick = function(){
+                imagesToICO(preparedFiles)
+            }
+        }
+        $(".image-container svg").click(function(){
+            let i = $(this).attr("list-index");
+            preparedImages.splice(i, 1)
+            preparedFiles.splice(i, 1)
+            displayImages()
         })
     })
 })

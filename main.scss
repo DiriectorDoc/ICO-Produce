@@ -13,6 +13,17 @@
     font-weight: bold;
 }
 
+@media screen and (orientation:portrait) {
+    .container {
+        width: 100%;
+    }
+}
+@media screen and (orientation:landscape) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
 body {
     margin: 0;
     font-family: Helvetica, sans-serif;
@@ -99,16 +110,46 @@ h1 {
     background: white;
     text-align: center;
 
-    img {
+    .image-container {
         vertical-align: baseline;
         margin: 0 1em;
-        border: 1px black dotted;
+        position: relative;
+        width: fit-content;
+        display: inline-block;
+
+        img {
+            
+            border: 1px black dotted;
+        }
+
+        svg {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            max-width: 24px;
+            min-width: 16px;
+            width: 75%;
+            display: none;
+
+            &:hover {
+                rect {
+                    fill: gray;
+                    stroke: #555;
+                }
+            }
+        }
     }
 
-    img:hover {
-        background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
-        background-size: 16px 16px;
-        background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    .image-container:hover {
+        svg {
+            display: block;
+        }
+
+        img {
+            background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
     }
 }
 
@@ -122,7 +163,6 @@ h1 {
 }
 
 .container {
-    max-width: 1024px;
     background: #ccc;
     margin: auto;
     position: relative;
