@@ -1,3 +1,9 @@
+@mixin transparent-grid {
+    background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
 /*
   * Font file from:
   * https://www.1001freefonts.com/mini-story.font
@@ -103,7 +109,7 @@ h1 {
     }
 }
 
-.input-images {
+.input-preview {
     padding: 20px;
     border: 2px gray solid;
     margin: 10px 0;
@@ -146,9 +152,7 @@ h1 {
         }
 
         img {
-            background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
-            background-size: 16px 16px;
-            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+            @include transparent-grid
         }
     }
 }
@@ -177,4 +181,114 @@ h1 {
     bottom: 3px;
     right: 0;
     color :white;
+}
+
+.dialogue-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.25) 100%);
+}
+
+.svg-dialogue {
+    height: 512px;
+    width: 512px;
+    margin: auto;
+    background: #ccc;
+    display: grid;
+    grid-template-columns: 226px 10px 64px 32px 8px 8px 4px 4px 16px 4px 4px 8px 8px 32px 64px auto;
+    grid-template-rows: 10px 64px 32px 8px 8px 4px 4px 16px 4px 4px 8px 8px 32px 64px auto;
+
+    .options {
+        grid-column: 1;
+        grid-row: 1/16;
+        border-right: 1px solid black;
+        white-space: pre-line;
+        line-height: 1.7rem;
+    }
+
+    .preview-svg {
+        display: table-cell;
+        vertical-align: middle;
+        background: white;
+
+        &:hover{
+            @include transparent-grid;
+        }
+
+        &.s16 {
+            grid-column: 9/10;
+            grid-row: 8/9;
+
+            img{
+                width: 16px;
+                max-height: 16px;
+            }
+        }
+
+        &.s24 {
+            grid-column: 8/11;
+            grid-row: 7/10;
+            
+            img{
+                width: 24px;
+                max-height: 24px;
+            }
+        }
+
+        &.s32 {
+            grid-column: 7/12;
+            grid-row: 6/11;
+            
+            img{
+                width: 32px;
+                max-height: 32px;
+            }
+        }
+
+        &.s48 {
+            grid-column: 6/13;
+            grid-row: 5/12;
+            
+            img{
+                width: 48px;
+                max-height: 48px;
+            }
+        }
+
+        &.s64 {
+            grid-column: 5/14;
+            grid-row: 4/13;
+            
+            img{
+                width: 64px;
+                max-height: 64px;
+            }
+        }
+
+        &.s128 {
+            grid-column: 4/15;
+            grid-row: 3/14;
+            
+            img{
+                width: 128px;
+                max-height: 128px;
+            }
+        }
+
+        &.s256 {
+            grid-column: 3/16;
+            grid-row: 2/15;
+            
+            img{
+                width: 256px;
+                max-height: 256px;
+            }
+        }
+
+        img {
+            margin: 0 auto;
+        }
+    }
 }

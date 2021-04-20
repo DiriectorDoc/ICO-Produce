@@ -26,15 +26,33 @@
     </head>
     <body>
 		<div class="container">
+			<div class="dialogue-container" style="display:none">
+				<div class="svg-dialogue">
+					<div class="options">
+						<label><input type="radio" name="aspect" value=16 /> 16px</label>
+						<label><input type="radio" name="aspect" value=24 /> 24px</label>
+						<label><input type="radio" name="aspect" value=32 /> 32px</label>
+						<label><input type="radio" name="aspect" value=48 /> 48px</label>
+						<label><input type="radio" name="aspect" value=64 /> 64px</label>
+						<label><input type="radio" name="aspect" value=128 /> 128px</label>
+						<label><input type="radio" name="aspect" value=256 checked /> 256px</label>
+						<button class="accept">Accept</button>
+						<button class="cancel">Cancel</button>
+					</div>
+					<div class="preview-svg s256">
+						<img />
+					</div>
+				</div>
+			</div>
 			<div class="social">
 				<a href="https://github.com/DiriectorDoc/ICO-Produce" class="github"></a>
 			</div>
 			<div class="content-wrapper">
 				<h1><img src="img/produce.png" height="96" /><span>ICO Produce</span></h1>
 				<div class="input button">
-					<label><input type="file" accept="image/png, image/jpeg, image/x-icon, image/webp, image/bmp, image/gif, image/tiff, image/x-xbitmap, image/heif, image/heif-sequence; image/heic, image/heic-sequence; image/avif, image/avif-sequence .cur" multiple />Select Images</label>
+					<label><input type="file" accept="image/png, image/jpeg, image/x-icon, image/webp, image/bmp, image/gif, image/tiff, image/x-xbitmap, image/heif, image/svg+xml, .cur" multiple />Select Images</label>
 				</div>
-				<div class="input-images">
+				<div class="input-preview">
 					<img class="loading" src="img/loading.png" style="display:none" />
 				</div>
 				<div class="convert button gray">

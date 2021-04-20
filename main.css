@@ -92,24 +92,24 @@ h1 img, h1 span {
   font: inherit;
 }
 
-.input-images {
+.input-preview {
   padding: 20px;
   border: 2px gray solid;
   margin: 10px 0;
   background: white;
   text-align: center;
 }
-.input-images .image-container {
+.input-preview .image-container {
   vertical-align: baseline;
   margin: 0 1em;
   position: relative;
   width: fit-content;
   display: inline-block;
 }
-.input-images .image-container img {
+.input-preview .image-container img {
   border: 1px black dotted;
 }
-.input-images .image-container svg {
+.input-preview .image-container svg {
   position: absolute;
   top: 1px;
   right: 1px;
@@ -118,14 +118,14 @@ h1 img, h1 span {
   width: 75%;
   display: none;
 }
-.input-images .image-container svg:hover rect {
+.input-preview .image-container svg:hover rect {
   fill: gray;
   stroke: #555;
 }
-.input-images .image-container:hover svg {
+.input-preview .image-container:hover svg {
   display: block;
 }
-.input-images .image-container:hover img {
+.input-preview .image-container:hover img {
   background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
@@ -154,6 +154,100 @@ h1 img, h1 span {
   bottom: 3px;
   right: 0;
   color: white;
+}
+
+.dialogue-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0.25) 100%);
+}
+
+.svg-dialogue {
+  height: 512px;
+  width: 512px;
+  margin: auto;
+  background: #ccc;
+  display: grid;
+  grid-template-columns: 226px 10px 64px 32px 8px 8px 4px 4px 16px 4px 4px 8px 8px 32px 64px auto;
+  grid-template-rows: 10px 64px 32px 8px 8px 4px 4px 16px 4px 4px 8px 8px 32px 64px auto;
+}
+.svg-dialogue .options {
+  grid-column: 1;
+  grid-row: 1/16;
+  border-right: 1px solid black;
+  white-space: pre-line;
+  line-height: 1.7rem;
+}
+.svg-dialogue .preview-svg {
+  display: table-cell;
+  vertical-align: middle;
+  background: white;
+}
+.svg-dialogue .preview-svg:hover {
+  background-image: linear-gradient(45deg, #CACACC 25%, transparent 25%), linear-gradient(-45deg, #CACACC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CACACC 75%), linear-gradient(-45deg, transparent 75%, #CACACC 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+.svg-dialogue .preview-svg.s16 {
+  grid-column: 9/10;
+  grid-row: 8/9;
+}
+.svg-dialogue .preview-svg.s16 img {
+  width: 16px;
+  max-height: 16px;
+}
+.svg-dialogue .preview-svg.s24 {
+  grid-column: 8/11;
+  grid-row: 7/10;
+}
+.svg-dialogue .preview-svg.s24 img {
+  width: 24px;
+  max-height: 24px;
+}
+.svg-dialogue .preview-svg.s32 {
+  grid-column: 7/12;
+  grid-row: 6/11;
+}
+.svg-dialogue .preview-svg.s32 img {
+  width: 32px;
+  max-height: 32px;
+}
+.svg-dialogue .preview-svg.s48 {
+  grid-column: 6/13;
+  grid-row: 5/12;
+}
+.svg-dialogue .preview-svg.s48 img {
+  width: 48px;
+  max-height: 48px;
+}
+.svg-dialogue .preview-svg.s64 {
+  grid-column: 5/14;
+  grid-row: 4/13;
+}
+.svg-dialogue .preview-svg.s64 img {
+  width: 64px;
+  max-height: 64px;
+}
+.svg-dialogue .preview-svg.s128 {
+  grid-column: 4/15;
+  grid-row: 3/14;
+}
+.svg-dialogue .preview-svg.s128 img {
+  width: 128px;
+  max-height: 128px;
+}
+.svg-dialogue .preview-svg.s256 {
+  grid-column: 3/16;
+  grid-row: 2/15;
+}
+.svg-dialogue .preview-svg.s256 img {
+  width: 256px;
+  max-height: 256px;
+}
+.svg-dialogue .preview-svg img {
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=main.css.map */
