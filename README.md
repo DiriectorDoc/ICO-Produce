@@ -6,7 +6,8 @@ Create multi-resolution ICO files from PNGs or other image files
 
 1. Uploaded your files
     * Compatible formats can be found [below].
-2. 
+2. Click **Generate**
+3. Download your file.
 ## Compatible file formats
 * PNG
 * JPEG

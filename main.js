@@ -47,6 +47,7 @@ async function imagesToICO(inputFiles){
 async function pixelateSVG(svg){
     let result;
     $(".dialogue-container").show()
+    $("input[value=256]").click()
     await new Promise((resolve, reject) => {
         let img = new Image();
         img.onload = () => {
