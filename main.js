@@ -4,13 +4,9 @@ async function command(files, command){
     return await Magick.Call(files, command.split(" "))
 }
 
-const /*args = {},*/
+const args = (a=>(new URLSearchParams(window.location.search).forEach((e,o)=>a[o]=e),a))({}),
       preparedImages = [],
       preparedFiles = [];
-
-/*for(const [k, v] of new URLSearchParams(location.search)){
-    args[k] = v
-}*/
 
 function dataURItoBlob(dataURI) {
     let b = atob(dataURI.split(',')[1]),
@@ -150,11 +146,11 @@ $(function(){
         $(".input-preview .loading").hide()
         
         $(".convert.button").removeClass("gray")
-        if(!$("button")[0].onclick){
-            $("button")[0].onclick = function(){
+        $("button")
+            .off("click")
+            .click(function(){
                 imagesToICO(preparedFiles)
-            }
-        }
+            })
     })
     $(".svg-dialogue .options input").click(function(){
         $(".preview-svg").attr("class", "preview-svg s"+this.value)
