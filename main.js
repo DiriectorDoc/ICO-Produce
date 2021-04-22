@@ -32,16 +32,16 @@ function displayImages(){
     })
 }
 async function imagesToICO(inputFiles){
-    $(".output-images .loading").show()
-    $(".output-images img:not(.loading)").remove()
+    $(".output .loading").show()
+    $(".output img:not(.loading)").remove()
     let cmd = "convert";
     for(let e of inputFiles){
         cmd += " "+e.name
     }
     cmd += " icon.ico";
     let processedFile = (await command(inputFiles, cmd))[0];
-    $(".output-images").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
-    $(".output-images .loading").hide()
+    $(".output").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
+    $(".output .loading").hide()
 }
 
 async function pixelateSVG(svg){

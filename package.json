@@ -1,0 +1,28 @@
+{
+  "name": "ico-produce",
+  "version": "0.0.2",
+  "description": "Create multi-resolution .ico files from otehr image formats",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiriectorDoc/ICO-Produce.git"
+  },
+  "keywords": [
+    "png",
+    "ico",
+    "jpeg",
+    "generate"
+  ],
+  "author": "DiriectorDoc",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/DiriectorDoc/ICO-Produce/issues"
+  },
+  "homepage": "https://github.com/DiriectorDoc/ICO-Produce#readme",
+  "dependencies": {
+    "wasm-imagemagick": "^1.2.8"
+  }
+}

@@ -1,3 +1,0 @@
-[submodule "wasm-imagemagick/WASM-ImageMagick"]
-	path = wasm-imagemagick/WASM-ImageMagick
-	url = https://github.com/KnicKnic/WASM-ImageMagick
