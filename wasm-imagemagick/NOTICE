@@ -1,13 +1,13 @@
                                   NOTICE
 -----------------------------------------------------------------------------
-The files within this foler, "/wasm-imagemagick", were obtained from user
-KnicKnic's WASM-ImageMagick (https://github.com/KnicKnic/WASM-ImageMagick)
+The files within this folder, "/wasm-imagemagick", were obtained from user
+KnicKnic's WASM-ImageMagick (https://www.npmjs.com/package/wasm-imagemagick)
 repositor on GitHub. The original work is licenced under the Apache License
-2.0. A copy of the lecence can be found under "/wasm-imagemagick/LICENSE".
+2.0. A copy of the licence can be found under "/wasm-imagemagick/LICENSE".
 
 Although there were no modifications to the original files, only three (3) of
-the files within the repository are necessary in this instance. The those
-files, as can be seen in this directory, are as follows:
+the files within the repository are necessary for this instance. Those files,
+as can be seen in this directory, are as follows:
 
     magick.js
     magick.wasm
