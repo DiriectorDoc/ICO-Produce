@@ -1,8 +1,8 @@
                                   NOTICE
 -----------------------------------------------------------------------------
 The files within this folder, "/wasm-imagemagick", were obtained from user
-KnicKnic's WASM-ImageMagick (https://www.npmjs.com/package/wasm-imagemagick)
-repositor on GitHub. The original work is licenced under the Apache License
+knicknic's wasm-imagemagick (https://www.npmjs.com/package/wasm-imagemagick)
+module on npmjs.com. The original work is licenced under the Apache License
 2.0. A copy of the licence can be found under "/wasm-imagemagick/LICENSE".
 
 Although there were no modifications to the original files, only three (3) of
