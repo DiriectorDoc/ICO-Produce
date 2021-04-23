@@ -19,7 +19,7 @@ function dataURItoBlob(dataURI) {
 }
 
 function displayImages(){
-    $(".input-preview .imageContainer").remove();
+    $(".input-preview .image-container").remove();
     for(let i in preparedImages){
         $(".input-preview")
             .append(`<div class="image-container"><img src="${URL.createObjectURL(preparedImages[i])}" /><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" list-index=${i}><rect width="15" height="15" x=".5" y=".5" fill="red" stroke="maroon" stroke-linecap="round" ry="0"/><path fill="#fff" d="M6.63 2.585v.996H3.668v9.837h8.667V3.581H9.32v-.996z"/><path d="M5.833 1.5v1.083H1.5v1.084h1.083V14.5h10.834V3.667H14.5V2.583h-4.333V1.5zm1.084 1.083h2.166v1.084h3.25v9.75H3.667v-9.75h3.25zm-1.084 3.25v5.417h1.084V5.833zm3.25 0v5.417h1.084V5.833z" color="#4d4d4d"/></svg></div>`)
@@ -39,8 +39,12 @@ async function imagesToICO(inputFiles){
         cmd += " "+e.name
     }
     cmd += " icon.ico";
-    let processedFile = (await command(inputFiles, cmd))[0];
-    $(".output .image").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
+    let processedFileURL = URL.createObjectURL((await command(inputFiles, cmd))[0].blob);
+    $(".output .image").append(`<img src="${processedFileURL}" />`)
+    $(".download.button")
+        .removeClass("gray")
+        .find("a")
+            .attr("href", processedFileURL)
     $(".output .loading").hide()
 }
 

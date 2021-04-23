@@ -64,11 +64,26 @@ h1 img, h1 span {
   font-size: 1.3rem;
   padding: 0.4em 0;
 }
-.button.gray label {
+.button.download a {
+  padding: 0.4em;
+  border-radius: 0.2em;
+  background: #0075ff;
+  margin: 0;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  color: #000;
+}
+.button.download a:any-link, .button.download a:visited {
+  color: #000;
+}
+.button.gray label, .button.gray a {
   background: gray;
   color: #222;
 }
-.button.gray label, .button.gray label * {
+.button.gray label, .button.gray label *, .button.gray a, .button.gray a * {
   cursor: unset;
 }
 .button label {
@@ -247,7 +262,6 @@ h1 img, h1 span {
 }
 .svg-dialogue .preview-svg img {
   margin: 0 auto;
-  vertical-align: middle;
 }
 
 .output {
@@ -267,7 +281,6 @@ h1 img, h1 span {
   flex: 1;
   width: 100%;
   margin: 0;
-  margin-top: calc(1em - 16px);
 }
 .resizer div {
   line-height: 1em;
