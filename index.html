@@ -12,8 +12,8 @@
 		<meta property="og:url" content="https://diriectordoc.github.io/ICO-Produce" />
 		<meta property="og:image" content="https://diriectordoc.github.io/ICO-Produce/img/produce.png" />
 		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:width" content="512" />
-		<meta property="og:image:height" content="490" />
+		<meta property="og:image:width" content=512 />
+		<meta property="og:image:height" content=490 />
 		<meta property="og:description" content="Multiresolution ICO file generator." />
 		<meta property="og:locale" content="en_CA" />
 		<meta property="og:site_name" content="Diriector_Doc Pages" />
@@ -24,13 +24,16 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 		<script>
 			try {
+				if(window.isIE){
+					alert("You are using Internet Explorer. This application can only be used on modern browsers.")
+				}
 				if(typeof WebAssembly == "object" && typeof WebAssembly.instantiate == "function") {
 					const module = new WebAssembly.Module(Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00));
 					if (module instanceof WebAssembly.Module && new WebAssembly.Instance(module) instanceof WebAssembly.Instance)
 						$("head").append('<script type="module" src="main.js">')
 				}
 			} catch(e){
-				$(document.body).html('<style>svg {width:300px;margin:15px auto;display:block;}h1{font-family:initial}</style><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.7 210.9"><path fill="#1ebbee" d="M213.6 110.6c0-17-4.4-33-12-47 33-74-35-63-39-63-14 2.8-28 7.3-40 13-46-.6-86 24-99 75 24-27 41-38 51-42l-6.3 5.9c-16 16-29 32-40 49-8.5 15-18 28-23 45-27 98 58 57 70 50a96.7 96.7 0 00134-54.1h-51c-24 38-81 21-83-20h138c.5-4.1.8-8.2.8-12zm-18-95c8.3 5.6 15 14 3.5 44-11-18-27-32-47-39 8.9-4.3 31-13 44-5zm-177 181c-6.8-7-8-24 7-55 7.5 22 23 40 42 51-9.7 5.3-35 17-49 3.3zm56-100c.7-22 20-40 44-40s43 18 44 40h-87z"></path><g stroke-width="2.7"><path fill="gray" fill-opacity=".9" d="M254 117.4a7.7 7.7 0 00-5.8-.9l-35 8.8a7.7 7.7 0 113.8 15l35-8.8a7.7 7.7 0 002-14.1z"></path><path fill="red" fill-opacity=".9" fill-rule="evenodd" d="M219 126.1a7.7 7.7 0 00-5.8-.8l-52.5 13.1a11 11 0 103.7 15l52.6-13.1a7.7 7.7 0 002-14.2z"></path><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" d="M255 115.8a9.6 9.6 0 00-7.2-1l-35 8.7-52.1 13a12.7 12.7 0 104.6 18.6l52.1-13 35-8.8a9.6 9.6 0 002.6-17.5zm-1.9 3.1a6 6 0 01-1.6 10.9l-35 8.7-53.2 13.4-.4.6a9 9 0 11-15.7-9.4 9 9 0 0112.5-3.1l.7.4 53.2-13.3 35-8.8c1.5-.4 3.1-.2 4.5.6z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible"></path><g fill-rule="evenodd" color="#000" font-family="sans-serif" font-weight="400"><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#fff" fill-opacity=".8" d="M160 146.6l95.1-23.8-.6-2.5-95 23.8z" overflow="visible"></path><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" d="M254.5 120.2L159.4 144l.6 2.6 95.2-23.8zm0 .1l.5 2.4-94.9 23.8-.6-2.4z" overflow="visible"></path></g></g></svg><h1>Aw, Snap!</h1><p>It looks like your browser does not support WebAssembly. This may be because yout browser is not running the latest version, or doesn\'t support WebAssembly altogether. Try accessing this website using a different browser.<p>')
+				window.onload = function(){$(document.body).html('<style>svg {width:300px;margin:15px auto;display:block;}h1{font-family:initial}</style><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.7 210.9"><path fill="#1ebbee" d="M213.6 110.6c0-17-4.4-33-12-47 33-74-35-63-39-63-14 2.8-28 7.3-40 13-46-.6-86 24-99 75 24-27 41-38 51-42l-6.3 5.9c-16 16-29 32-40 49-8.5 15-18 28-23 45-27 98 58 57 70 50a96.7 96.7 0 00134-54.1h-51c-24 38-81 21-83-20h138c.5-4.1.8-8.2.8-12zm-18-95c8.3 5.6 15 14 3.5 44-11-18-27-32-47-39 8.9-4.3 31-13 44-5zm-177 181c-6.8-7-8-24 7-55 7.5 22 23 40 42 51-9.7 5.3-35 17-49 3.3zm56-100c.7-22 20-40 44-40s43 18 44 40h-87z"></path><g stroke-width="2.7"><path fill="gray" fill-opacity=".9" d="M254 117.4a7.7 7.7 0 00-5.8-.9l-35 8.8a7.7 7.7 0 113.8 15l35-8.8a7.7 7.7 0 002-14.1z"></path><path fill="red" fill-opacity=".9" fill-rule="evenodd" d="M219 126.1a7.7 7.7 0 00-5.8-.8l-52.5 13.1a11 11 0 103.7 15l52.6-13.1a7.7 7.7 0 002-14.2z"></path><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" d="M255 115.8a9.6 9.6 0 00-7.2-1l-35 8.7-52.1 13a12.7 12.7 0 104.6 18.6l52.1-13 35-8.8a9.6 9.6 0 002.6-17.5zm-1.9 3.1a6 6 0 01-1.6 10.9l-35 8.7-53.2 13.4-.4.6a9 9 0 11-15.7-9.4 9 9 0 0112.5-3.1l.7.4 53.2-13.3 35-8.8c1.5-.4 3.1-.2 4.5.6z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible"></path><g fill-rule="evenodd" color="#000" font-family="sans-serif" font-weight="400"><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#fff" fill-opacity=".8" d="M160 146.6l95.1-23.8-.6-2.5-95 23.8z" overflow="visible"></path><path style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" d="M254.5 120.2L159.4 144l.6 2.6 95.2-23.8zm0 .1l.5 2.4-94.9 23.8-.6-2.4z" overflow="visible"></path></g></g></svg><h1>Aw, Snap!</h1><p>It looks like your browser does not support WebAssembly. This may be because yout browser is not running the latest version, or doesn\'t support WebAssembly altogether. Try accessing this website using a different browser.<p>')}
 			}
 		</script>
     </head>
@@ -50,7 +53,7 @@
 						<button class="cancel">Cancel</button>
 					</div>
 					<div class="preview-svg s256">
-						<img />
+						<span class="v-align-helper"></span><img />
 					</div>
 				</div>
 			</div>
@@ -58,7 +61,7 @@
 				<a href="https://github.com/DiriectorDoc/ICO-Produce" class="github"></a>
 			</div>
 			<div class="content-wrapper">
-				<h1><img src="img/produce.png" height="96" /><span>ICO Produce</span></h1>
+				<h1><img src="img/produce.png" height=96 /><span>ICO Produce</span></h1>
 				<div class="input button">
 					<label><input type="file" accept="image/png, image/jpeg, image/x-icon, image/webp, image/bmp, image/gif, image/tiff, image/x-xbitmap, image/heif, image/svg+xml, .cur" multiple />Select Images</label>
 				</div>
@@ -70,6 +73,8 @@
 				</div>
 				<div class="output">
 					<img class="loading" src="img/loading.png" style="display:none" />
+					<div class="image"><span class="v-align-helper"></span><img /></div>
+					<div class="resizer"><input type="range" min=16 max=256 step=8 value=256 /><div>256</div></div>
 				</div>
 			</div>
 			<div class="footer asf"></div>

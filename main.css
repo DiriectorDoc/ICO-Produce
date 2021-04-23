@@ -132,6 +132,7 @@ h1 img, h1 span {
 }
 
 .loading {
+  height: 256px;
   border: none !important;
   background: none !important;
 }
@@ -181,8 +182,6 @@ h1 img, h1 span {
   line-height: 1.7rem;
 }
 .svg-dialogue .preview-svg {
-  display: table-cell;
-  vertical-align: middle;
   background: white;
 }
 .svg-dialogue .preview-svg:hover {
@@ -248,6 +247,43 @@ h1 img, h1 span {
 }
 .svg-dialogue .preview-svg img {
   margin: 0 auto;
+  vertical-align: middle;
+}
+
+.output {
+  text-align: center;
+}
+.output .image {
+  height: 256px;
+}
+
+.resizer {
+  display: flex;
+  font: 24px Consolas, "Lucida Console", monospace;
+  width: 256px;
+  margin: auto;
+}
+.resizer input[type=range] {
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  margin-top: calc(1em - 16px);
+}
+.resizer div {
+  line-height: 1em;
+  width: auto;
+  text-align: right;
+  direction: rtl;
+  height: 1em;
+  display: inline-block;
+}
+
+.v-align-helper {
+  display: inline-block;
+  height: 100%;
+}
+.v-align-helper, .v-align-helper + img {
+  vertical-align: middle;
 }
 
 /*# sourceMappingURL=main.css.map */

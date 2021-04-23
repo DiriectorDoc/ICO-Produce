@@ -33,25 +33,27 @@ function displayImages(){
 }
 async function imagesToICO(inputFiles){
     $(".output .loading").show()
-    $(".output img:not(.loading)").remove()
+    $(".output .image img").remove()
     let cmd = "convert";
     for(let e of inputFiles){
         cmd += " "+e.name
     }
     cmd += " icon.ico";
     let processedFile = (await command(inputFiles, cmd))[0];
-    $(".output").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
+    $(".output .image").append(`<img src="${URL.createObjectURL(processedFile.blob)}" />`)
     $(".output .loading").hide()
 }
 
 async function pixelateSVG(svg){
     let result;
     $(".dialogue-container").show()
-    $("input[value=256]").click()
+    $(".options input[value=256]").click()
     await new Promise((resolve, reject) => {
         let img = new Image();
         img.onload = () => {
-            $(".preview-svg").html(img)
+            $(".preview-svg")
+                .html('<span class="v-align-helper">')
+                .append(img)
             $(".svg-dialogue .options button.accept")[0].onclick = function(){
                 let canvas = $("<canvas>")[0],
                     devisor = Math.max(img.naturalWidth, img.naturalHeight) / $(".svg-dialogue .options input:checked").val();
@@ -85,10 +87,6 @@ class U8File {
 }
 
 $(function(){
-    if(window.isIE){
-        alert("You are using Internet Explorer. This application can only be used on modern browsers.")
-        return
-    }
     $(".input input").change(async function(){
         /* Resetting */
         $(".input-preview .loading").show()
@@ -155,5 +153,9 @@ $(function(){
     })
     $(".svg-dialogue .options input").click(function(){
         $(".preview-svg").attr("class", "preview-svg s"+this.value)
+    })
+    $(".resizer input").on("input", function(){
+        $(".resizer div").html(this.value)
+        $(".output .image img").css("width", this.value)
     })
 })
