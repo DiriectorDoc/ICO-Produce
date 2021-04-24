@@ -46,16 +46,16 @@ h1 img, h1 span {
   left: 5px;
 }
 
-.footer {
+.licence {
   color: white;
   padding: 1em;
   padding-bottom: 2em;
   background: #333;
 }
-.footer a {
+.licence a {
   color: #88e;
 }
-.footer a:visited {
+.licence a:visited {
   color: #B981EE;
 }
 
