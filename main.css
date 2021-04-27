@@ -46,16 +46,10 @@ h1 img, h1 span {
   left: 5px;
 }
 
-.licence {
-  color: white;
-  padding: 1em;
-  padding-bottom: 2em;
-  background: #333;
-}
-.licence a {
+.license a {
   color: #88e;
 }
-.licence a:visited {
+.license a:visited {
   color: #B981EE;
 }
 
@@ -167,8 +161,8 @@ h1 img, h1 span {
 
 .version {
   position: absolute;
-  bottom: 3px;
-  right: 0;
+  bottom: 2em;
+  right: 1em;
   color: white;
 }
 
@@ -297,6 +291,13 @@ h1 img, h1 span {
 }
 .v-align-helper, .v-align-helper + img {
   vertical-align: middle;
+}
+
+footer {
+  color: white;
+  padding: 1em;
+  padding-bottom: 2em;
+  background: #333;
 }
 
 /*# sourceMappingURL=main.css.map */
