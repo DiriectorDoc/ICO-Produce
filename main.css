@@ -58,10 +58,13 @@ h1 img, h1 span {
   font-size: 1.3rem;
   padding: 0.4em 0;
 }
+.button > * {
+  transition: background 500ms;
+}
 .button.download a {
   padding: 0.4em;
   border-radius: 0.2em;
-  background: #0075ff;
+  background: #0075FF;
   margin: 0;
   display: block;
   -webkit-user-select: none;
@@ -70,12 +73,18 @@ h1 img, h1 span {
   text-decoration: none;
   color: #000;
 }
+.button.download a:hover {
+  background: #005CC8;
+}
 .button.download a:any-link, .button.download a:visited {
   color: #000;
 }
 .button.gray label, .button.gray a {
   background: gray;
   color: #222;
+}
+.button.gray label:hover, .button.gray a:hover {
+  background: gray;
 }
 .button.gray label, .button.gray label *, .button.gray a, .button.gray a * {
   cursor: unset;
@@ -84,6 +93,9 @@ h1 img, h1 span {
   padding: 0.4em;
   border-radius: 0.2em;
   background: #4A9C4A;
+}
+.button label:hover {
+  background: #277227;
 }
 .button label, .button label * {
   cursor: pointer;

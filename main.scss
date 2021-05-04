@@ -69,11 +69,15 @@ h1 {
     display: inline-block;
     font-size: 1.3rem;
     padding: .4em 0;
+
+    & > * {
+        transition: background 500ms;
+    }
         
     &.download a {
         padding: .4em;
         border-radius: .2em;
-        background: #0075ff;
+        background: #0075FF;
         margin: 0;
         display: block;
         -webkit-user-select: none;
@@ -81,6 +85,10 @@ h1 {
         user-select: none;
         text-decoration: none;
         color: #000;
+
+        &:hover {
+            background: #005CC8;
+        }
 
         &:any-link, &:visited {
             color: #000;
@@ -92,6 +100,10 @@ h1 {
             background: gray;
             color: #222;
 
+            &:hover {
+                background: gray;
+            }
+
             &,* {
                 cursor: unset;
             }
@@ -102,6 +114,10 @@ h1 {
         padding: .4em;
         border-radius: .2em;
         background: #4A9C4A;
+
+        &:hover {
+            background: #277227
+        }
 
         &,* {
             cursor: pointer;

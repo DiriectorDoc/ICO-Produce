@@ -32,7 +32,7 @@ function displayImages(){
     })
 }
 async function imagesToICO(inputFiles){
-    $(".output .loading").show()
+    $(".output").show()
     $(".output .image img").remove()
     let cmd = "convert";
     for(let e of inputFiles){
@@ -59,17 +59,17 @@ async function pixelateSVG(svg){
                 .html('<span class="v-align-helper">')
                 .append(img)
             $(".svg-dialogue .options button.accept")[0].onclick = function(){
-                let canvas = $("<canvas>")[0],
+                let c, canvas = $("<canvas>")[0],
                     devisor = Math.max(img.naturalWidth, img.naturalHeight) / $(".svg-dialogue .options input:checked").val();
                 canvas.width = Math.round(img.naturalWidth / devisor);
                 canvas.height = Math.round(img.naturalHeight / devisor);
-                let c = canvas.getContext("2d");
+                c = canvas.getContext("2d");
                 c.drawImage(img, 0, 0, canvas.width, canvas.height)
                 resolve(dataURItoBlob(canvas.toDataURL("image/png")))
             };
             $(".svg-dialogue .options button.cancel")[0].onclick = function(){
                 if(window.confirm("Skip upload of this SVG?")){
-                    reject()
+                    resolve(false)
                 }
             }
         };
@@ -77,6 +77,7 @@ async function pixelateSVG(svg){
     }).then(e => {
         result = e
     }).catch(err => {
+        console.error(err)
         result = false
     })
     $(".dialogue-container").hide()
